@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "country": "Latvia",
+  "countryCode": "LV",
+  "region": "RIX",
+  "regionName": "Riga",
+  "city": "Riga",
+  "zip": "LV-1058",
+  "lat": 56.9496,
+  "lon": 24.0978,
+  "timezone": "Europe/Riga",
+  "isp": "BALTKOM",
+  "org": "",
+  "as": "AS20910 SIA Baltcom",
+  "query": "85.234.174.191"
+}
