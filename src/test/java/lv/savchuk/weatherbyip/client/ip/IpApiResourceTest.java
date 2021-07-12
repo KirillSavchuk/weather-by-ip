@@ -15,7 +15,7 @@ class IpApiResourceTest extends ResourceMapperTester {
 
 	@Test
 	void testMapping() throws IOException {
-		final IpApiResource resource = getValue(IpApiResource.class);
+		final IpApiResource resource = getResource(IpApiResource.class);
 		assertThat(resource.getStatus()).isEqualTo("success");
 		assertThat(resource.getMessage()).isNull();
 		assertThat(resource.getCountry()).isEqualTo("Latvia");

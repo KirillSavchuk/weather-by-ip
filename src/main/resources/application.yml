@@ -1,3 +1,6 @@
+client:
+  open-weather-map:
+    api-key: f5e21b7939b3e90c67869841245de61d
 logging:
   level:
     lv:
@@ -6,6 +9,8 @@ logging:
           client:
             ip:
               IpApiClient: DEBUG
+            weather:
+              OpenWeatherMapClient: DEBUG
 feign:
   client:
     config:

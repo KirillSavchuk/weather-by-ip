@@ -14,7 +14,7 @@ public abstract class ResourceMapperTester {
 
 	private final ObjectMapper objectMapper = new ObjectMapper();
 
-	protected <T> T getValue(Class<T> objectCls) throws IOException {
+	protected <T> T getResource(Class<T> objectCls) throws IOException {
 		return objectMapper.readValue(getDataFileContent(), objectCls);
 	}
 
