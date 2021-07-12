@@ -12,6 +12,8 @@ import lombok.extern.jackson.Jacksonized;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class IpApiResource {
 
+	String status;
+	String message;
 	String country;
 	String city;
 	@JsonProperty("lat")
