@@ -72,12 +72,6 @@ public class OpenWeatherMapResource {
 		Float speed;
 		@JsonProperty("deg")
 		Integer degrees;
-		@JsonProperty("temp_min")
-		Float min;
-		@JsonProperty("temp_max")
-		Float max;
-		Float pressure;
-		Float humidity;
 	}
 
 }
