@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @FeignClient(
 	name = "ip-stack",
-	url = "http://api.ipstack.com",
+	url = "${client.ip-stack.url}",
 	configuration = IpStackClient.CustomConfig.class
 )
 public interface IpStackClient {

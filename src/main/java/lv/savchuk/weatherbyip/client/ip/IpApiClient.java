@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @FeignClient(
 	name = "ip-api",
-	url = "http://ip-api.com/json"
+	url = "${client.ip-api.url}"
 )
 public interface IpApiClient {
 

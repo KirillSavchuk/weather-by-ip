@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @FeignClient(
 	name = "open-weather-map",
-	url = "http://api.openweathermap.org/data/2.5",
+	url = "${client.open-weather-map.url}",
 	configuration = OpenWeatherMapClient.CustomConfig.class
 )
 public interface OpenWeatherMapClient {
