@@ -1,4 +1,6 @@
 client:
+  ip-stack:
+    api-key: bce3c57a13c16cfe79cbf7e467463036
   open-weather-map:
     api-key: f5e21b7939b3e90c67869841245de61d
 logging:

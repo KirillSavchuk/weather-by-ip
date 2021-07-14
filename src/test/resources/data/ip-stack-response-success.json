@@ -1,0 +1,30 @@
+{
+  "ip": "85.234.174.19",
+  "type": "ipv4",
+  "continent_code": "EU",
+  "continent_name": "Europe",
+  "country_code": "LV",
+  "country_name": "Latvia",
+  "region_code": "RIX",
+  "region_name": "Riga",
+  "city": "Riga",
+  "zip": "LV-1001",
+  "latitude": 56.96017074584961,
+  "longitude": 24.134309768676758,
+  "location": {
+    "geoname_id": 456172,
+    "capital": "Riga",
+    "languages": [
+      {
+        "code": "lv",
+        "name": "Latvian",
+        "native": "Latviešu"
+      }
+    ],
+    "country_flag": "http://assets.ipstack.com/flags/lv.svg",
+    "country_flag_emoji": "🇱🇻",
+    "country_flag_emoji_unicode": "U+1F1F1 U+1F1FB",
+    "calling_code": "371",
+    "is_eu": true
+  }
+}

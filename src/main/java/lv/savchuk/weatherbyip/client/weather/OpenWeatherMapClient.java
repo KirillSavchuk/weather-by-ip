@@ -7,12 +7,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import static lv.savchuk.weatherbyip.client.weather.OpenWeatherMapClient.CustomConfig;
-
 /**
  * https://openweathermap.org/current
  */
-@FeignClient(name = "open-weather-map", url = "http://api.openweathermap.org/data/2.5", configuration = CustomConfig.class)
+@FeignClient(
+	name = "open-weather-map",
+	url = "http://api.openweathermap.org/data/2.5",
+	configuration = OpenWeatherMapClient.CustomConfig.class
+)
 public interface OpenWeatherMapClient {
 
 	@GetMapping(value = "/weather")
