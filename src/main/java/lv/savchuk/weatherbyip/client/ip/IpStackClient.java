@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 )
 public interface IpStackClient {
 
-	@GetMapping(path = "/")
+	@GetMapping(path = "/{ipAddress}")
 	IpStackResource findGeolocationByIp(
 		@PathVariable("ipAddress") String ipAddress,
 		@RequestParam("fields") String[] fields

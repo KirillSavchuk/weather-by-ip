@@ -19,15 +19,14 @@ public class WeatherForecastManager {
 	}
 
 	public Optional<WeatherForecast> getWeatherForecast(IpGeolocation ipGeolocation) {
-		WeatherForecast weatherForecast = null;
 		for (WeatherForecastService service : services) {
 			try {
-				weatherForecast = service.getWeatherForecast(ipGeolocation);
+				return Optional.of(service.getWeatherForecast(ipGeolocation));
 			} catch (Exception ex) { //TODO: handle Feign Exception
 				log.error("Very bad things happened...", ex);
 			}
 		}
-		return Optional.ofNullable(weatherForecast);
+		return Optional.empty();
 	}
 
 }

@@ -1,25 +1,32 @@
 package lv.savchuk.weatherbyip.service.weather;
 
+import feign.FeignException;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lv.savchuk.weatherbyip.client.weather.OpenWeatherMapClient;
 import lv.savchuk.weatherbyip.client.weather.OpenWeatherMapResource;
 import lv.savchuk.weatherbyip.mapper.weather.OpenWeatherMapMapper;
-import lv.savchuk.weatherbyip.model.IpGeolocation;
 import lv.savchuk.weatherbyip.model.Coordinates;
-import lv.savchuk.weatherbyip.model.WeatherForecast;
+import lv.savchuk.weatherbyip.model.IpGeolocation;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class OpenWeatherMapService implements WeatherForecastService {
+public class OpenWeatherMapService extends WeatherForecastAbstractService<OpenWeatherMapResource> {
 
-	private final OpenWeatherMapClient client;
+	@Getter
 	private final OpenWeatherMapMapper mapper;
+	private final OpenWeatherMapClient client;
 
-	public WeatherForecast getWeatherForecast(IpGeolocation ipGeolocation) {
+	@Override
+	protected OpenWeatherMapResource getWeatherForecastResource(IpGeolocation ipGeolocation) throws FeignException {
 		final Coordinates coordinates = ipGeolocation.getCoordinates();
-		final OpenWeatherMapResource weatherData = client.findCurrentWeather(coordinates.getLongitude(), coordinates.getLatitude());
-		return mapper.mapFrom(weatherData);
+		return client.findCurrentWeather(coordinates.getLongitude(), coordinates.getLatitude());
+	}
+
+	@Override
+	protected void validateResource(OpenWeatherMapResource resource) {
+		//TODO: add validation
 	}
 
 }
