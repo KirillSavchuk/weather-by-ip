@@ -19,7 +19,7 @@ public class IpApiService extends IpGeolocationAbstractService<IpApiResource> {
 	private final static String[] QUERY_FIELDS = new String[]{"status", "message", "country", "city", "lat", "lon"};
 
 	@Override
-	protected IpApiResource getIpGeolocationResource(String ipAddress) {
+	protected IpApiResource getIpCoordinatesResource(String ipAddress) {
 		return client.findGeolocationByIp(ipAddress, QUERY_FIELDS);
 	}
 

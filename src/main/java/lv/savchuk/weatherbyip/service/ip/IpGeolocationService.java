@@ -1,10 +1,10 @@
 package lv.savchuk.weatherbyip.service.ip;
 
+import lv.savchuk.weatherbyip.model.dao.IpCoordinates;
 import lv.savchuk.weatherbyip.exception.ExternalClientException;
-import lv.savchuk.weatherbyip.model.IpGeolocation;
 
 public interface IpGeolocationService {
 
-	IpGeolocation getGeolocationByIp(String ipAddress) throws ExternalClientException;
+	IpCoordinates getCoordinatesByIp(String ipAddress) throws ExternalClientException;
 
 }

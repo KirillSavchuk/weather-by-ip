@@ -5,9 +5,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lv.savchuk.weatherbyip.client.weather.OpenWeatherMapClient;
 import lv.savchuk.weatherbyip.client.weather.OpenWeatherMapResource;
+import lv.savchuk.weatherbyip.model.dao.IpCoordinates;
 import lv.savchuk.weatherbyip.mapper.weather.OpenWeatherMapMapper;
-import lv.savchuk.weatherbyip.model.Coordinates;
-import lv.savchuk.weatherbyip.model.IpGeolocation;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,9 +18,8 @@ public class OpenWeatherMapService extends WeatherForecastAbstractService<OpenWe
 	private final OpenWeatherMapClient client;
 
 	@Override
-	protected OpenWeatherMapResource getWeatherForecastResource(IpGeolocation ipGeolocation) throws FeignException {
-		final Coordinates coordinates = ipGeolocation.getCoordinates();
-		return client.findCurrentWeather(coordinates.getLongitude(), coordinates.getLatitude());
+	protected OpenWeatherMapResource getWeatherForecastResource(IpCoordinates ipCoordinates) throws FeignException {
+		return client.findCurrentWeather(ipCoordinates.getLongitude(), ipCoordinates.getLatitude());
 	}
 
 	@Override

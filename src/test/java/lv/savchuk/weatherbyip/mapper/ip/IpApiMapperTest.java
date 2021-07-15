@@ -1,9 +1,10 @@
 package lv.savchuk.weatherbyip.mapper.ip;
 
 import lv.savchuk.weatherbyip.client.ip.IpApiResource;
-import lv.savchuk.weatherbyip.model.IpGeolocation;
+import lv.savchuk.weatherbyip.model.dao.Geolocation;
+import lv.savchuk.weatherbyip.model.dao.IpCoordinates;
+import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,8 +12,10 @@ class IpApiMapperTest {
 
 	private IpApiMapper mapper;
 
-	private final Float LATITUDE = 1.1f;
-	private final Float LONGITUDE = 2.2f;
+	private final static Float LATITUDE = 1.1f;
+	private final static Float LONGITUDE = 2.2f;
+	private final static String COUNTRY = "COUNTRY";
+	private final static String CITY = "CITY";
 
 	@BeforeEach
 	void setUp() {
@@ -20,18 +23,21 @@ class IpApiMapperTest {
 	}
 
 	@Test
-	void mapFrom_success() {
+	public void mapFrom_success() {
 		final IpApiResource resource = IpApiResource.builder()
-			.country("COUNTRY")
-			.city("CITY")
+			.country(COUNTRY)
+			.city(CITY)
 			.latitude(LATITUDE)
 			.longitude(LONGITUDE)
 			.build();
 
-		final IpGeolocation ipGeolocation = mapper.mapFrom(resource);
+		final IpCoordinates ipCoordinates = mapper.mapFrom(resource);
 
-		assertThat(ipGeolocation.getCoordinates().getLatitude()).isEqualTo(LATITUDE);
-		assertThat(ipGeolocation.getCoordinates().getLongitude()).isEqualTo(LONGITUDE);
+		final Geolocation geolocation = ipCoordinates.getGeolocation();
+		assertThat(ipCoordinates.getLatitude()).isEqualTo(LATITUDE);
+		assertThat(ipCoordinates.getLongitude()).isEqualTo(LONGITUDE);
+		assertThat(geolocation.getCountry()).isEqualTo(COUNTRY);
+		assertThat(geolocation.getCity()).isEqualTo(CITY);
 	}
 
 }

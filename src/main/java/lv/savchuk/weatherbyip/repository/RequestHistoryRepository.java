@@ -1,6 +1,6 @@
-package lv.savchuk.weatherbyip.db.repository;
+package lv.savchuk.weatherbyip.repository;
 
-import lv.savchuk.weatherbyip.db.entity.RequestHistory;
+import lv.savchuk.weatherbyip.model.dao.RequestHistory;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

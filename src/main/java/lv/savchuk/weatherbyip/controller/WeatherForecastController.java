@@ -1,8 +1,9 @@
 package lv.savchuk.weatherbyip.controller;
 
 import io.swagger.annotations.ApiOperation;
+import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
-import lv.savchuk.weatherbyip.model.WeatherForecast;
+import lv.savchuk.weatherbyip.model.dto.RequesterWeatherForecast;
 import lv.savchuk.weatherbyip.service.WeatherByIpSearchService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -24,10 +25,10 @@ public class WeatherForecastController {
 	@ApiOperation(
 		value = "Get current weather forecast",
 		notes = "Returns current weather forecast in the requester location determined by requester IP address.",
-		response = WeatherForecast.class)
-	public ResponseEntity<WeatherForecast> getWeatherForecast(HttpServletRequest request) {
+		response = RequesterWeatherForecast.class)
+	public ResponseEntity<RequesterWeatherForecast> getWeatherForecast(HttpServletRequest request) throws NotFoundException {
 		final String ipAddress = "85.234.174.19"; // getIpAddress(request);
-		final WeatherForecast weatherForecast = service.getWeatherForecastByIp(ipAddress);
+		final RequesterWeatherForecast weatherForecast = service.getWeatherForecastByIp(ipAddress);
 		return ResponseEntity.ok().body(weatherForecast);
 	}
 

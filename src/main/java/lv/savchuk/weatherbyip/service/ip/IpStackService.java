@@ -19,7 +19,7 @@ public class IpStackService extends IpGeolocationAbstractService<IpStackResource
 	private final static String[] QUERY_FIELDS = new String[]{"country_name", "city", "latitude", "longitude"};
 
 	@Override
-	public IpStackResource getIpGeolocationResource(String ipAddress) {
+	public IpStackResource getIpCoordinatesResource(String ipAddress) {
 		return client.findGeolocationByIp(ipAddress, QUERY_FIELDS);
 	}
 

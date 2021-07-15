@@ -1,9 +1,10 @@
 package lv.savchuk.weatherbyip.service;
 
-import lv.savchuk.weatherbyip.model.WeatherForecast;
+import javassist.NotFoundException;
+import lv.savchuk.weatherbyip.model.dto.RequesterWeatherForecast;
 
 public interface WeatherByIpSearchService {
 
-	WeatherForecast getWeatherForecastByIp(String ipAddress);
+	RequesterWeatherForecast getWeatherForecastByIp(String ipAddress) throws NotFoundException;
 
 }
