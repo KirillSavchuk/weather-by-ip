@@ -2,15 +2,15 @@ package lv.savchuk.weatherbyip.mapper.weather;
 
 import lv.savchuk.weatherbyip.client.weather.OpenWeatherMapResource;
 import lv.savchuk.weatherbyip.model.dao.WeatherForecast;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 
 import java.util.List;
 
 import static lv.savchuk.weatherbyip.client.weather.OpenWeatherMapResource.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class OpenWeatherMapMapperTest {
+public class OpenWeatherMapMapperTest {
 
 	private OpenWeatherMapMapper mapper;
 
@@ -21,8 +21,8 @@ class OpenWeatherMapMapperTest {
 	private final static Float TEMPERATURE_MAX = 60f;
 	private final static Float TEMPERATURE_MIN = 40f;
 
-	@BeforeEach
-	void setUp() {
+	@Before
+	public void setUp() {
 		mapper = new OpenWeatherMapMapper();
 	}
 

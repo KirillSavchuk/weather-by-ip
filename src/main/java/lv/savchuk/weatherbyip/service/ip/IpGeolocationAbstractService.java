@@ -1,9 +1,9 @@
 package lv.savchuk.weatherbyip.service.ip;
 
 import feign.FeignException;
-import lv.savchuk.weatherbyip.model.dao.IpCoordinates;
 import lv.savchuk.weatherbyip.exception.ExternalClientException;
 import lv.savchuk.weatherbyip.mapper.ip.IpCoordinatesMapper;
+import lv.savchuk.weatherbyip.model.dao.IpCoordinates;
 
 public abstract class IpGeolocationAbstractService<T> implements IpGeolocationService {
 
@@ -11,9 +11,7 @@ public abstract class IpGeolocationAbstractService<T> implements IpGeolocationSe
 		try {
 			final T resource = getIpCoordinatesResource(ipAddress);
 			validateResource(resource);
-			final IpCoordinates ipCoordinates = getMapper().mapFrom(resource);
-			ipCoordinates.setIpAddress(ipAddress);
-			return ipCoordinates;
+			return getMapper().mapFrom(resource);
 		} catch (FeignException ex) {
 			throw new ExternalClientException(ex);
 		}

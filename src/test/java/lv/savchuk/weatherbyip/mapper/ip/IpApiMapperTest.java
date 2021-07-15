@@ -3,12 +3,12 @@ package lv.savchuk.weatherbyip.mapper.ip;
 import lv.savchuk.weatherbyip.client.ip.IpApiResource;
 import lv.savchuk.weatherbyip.model.dao.Geolocation;
 import lv.savchuk.weatherbyip.model.dao.IpCoordinates;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class IpApiMapperTest {
+public class IpApiMapperTest {
 
 	private IpApiMapper mapper;
 
@@ -17,8 +17,8 @@ class IpApiMapperTest {
 	private final static String COUNTRY = "COUNTRY";
 	private final static String CITY = "CITY";
 
-	@BeforeEach
-	void setUp() {
+	@Before
+	public void setUp() {
 		mapper = new IpApiMapper();
 	}
 

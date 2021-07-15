@@ -1,20 +1,20 @@
 package lv.savchuk.weatherbyip.client.weather;
 
 import lv.savchuk.weatherbyip.client.ResourceMapperTester;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class OpenWeatherMapResourceTest extends ResourceMapperTester {
+public class OpenWeatherMapResourceTest extends ResourceMapperTester {
 
 	public String getFileName() {
 		return "open-weather-response-success.json";
 	}
 
 	@Test
-	void testMapping() throws IOException {
+	public void testMapping() throws IOException {
 		final OpenWeatherMapResource resource = getResource(OpenWeatherMapResource.class);
 
 		final OpenWeatherMapResource.Coordinates coordinates = resource.getCoordinates();

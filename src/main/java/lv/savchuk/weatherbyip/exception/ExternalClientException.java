@@ -3,10 +3,10 @@ package lv.savchuk.weatherbyip.exception;
 import feign.FeignException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.ToString;
+
+import static java.lang.String.format;
 
 @Getter
-@ToString
 @AllArgsConstructor
 public class ExternalClientException extends Exception {
 
@@ -20,6 +20,10 @@ public class ExternalClientException extends Exception {
 
 	public ExternalClientException(FeignException feignException) {
 		this(feignException.getMessage(), String.valueOf(feignException.responseBody()), feignException);
+	}
+
+	public String toString() {
+		return format("External client error: %s. Client response: %s. Initial exception: %s.", errorMessage, response, initialException);
 	}
 
 }
