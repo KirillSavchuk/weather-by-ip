@@ -18,6 +18,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<spring.version>2.2.4.RELEASE</spring.version>
+		<cache.hazelcast.version>4.2.1</cache.hazelcast.version>
 
 		<lombok.version>1.18.20</lombok.version>
 		<springfox.swagger.version>3.0.0</springfox.swagger.version>
@@ -54,6 +55,23 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+
+		<!-- CACHE -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast</artifactId>
+			<version>${cache.hazelcast.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast-spring</artifactId>
+			<version>${cache.hazelcast.version}</version>
+		</dependency>
+
 
 		<!-- DB -->
 		<dependency>

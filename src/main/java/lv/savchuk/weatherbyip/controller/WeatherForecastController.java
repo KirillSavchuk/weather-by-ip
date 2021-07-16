@@ -34,4 +34,5 @@ public class WeatherForecastController {
 		final RequesterWeatherForecast weatherForecast = weatherByIpSearchService.getWeatherForecastByIp(ipAddress);
 		return ResponseEntity.ok().body(weatherForecast);
 	}
+
 }
