@@ -17,6 +17,6 @@ public interface WeatherForecastRepository extends CrudRepository<WeatherForecas
 		"WHERE wf.geolocation = :geolocation " +
 		"AND wf.createdOn < CURRENT_TIMESTAMP " +
 		"ORDER BY wf.createdOn DESC")
-	Optional<WeatherForecast> findFirstByGeolocationIdBeforeCreatedOn(@Param("geolocation") Geolocation geolocation);
+	Optional<WeatherForecast> findOneBeforeCreatedOn(@Param("geolocation") Geolocation geolocation);
 
 }
