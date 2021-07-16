@@ -3,8 +3,8 @@ package lv.savchuk.weatherbyip.service.ip;
 import feign.FeignException;
 import feign.Request;
 import lv.savchuk.weatherbyip.client.ip.IpStackClient;
-import lv.savchuk.weatherbyip.client.ip.IpStackResource;
-import static lv.savchuk.weatherbyip.client.ip.IpStackResource.Error;
+import lv.savchuk.weatherbyip.model.dto.IpStackResource;
+import static lv.savchuk.weatherbyip.model.dto.IpStackResource.Error;
 import lv.savchuk.weatherbyip.exception.ExternalClientException;
 import lv.savchuk.weatherbyip.mapper.ip.IpStackMapper;
 import lv.savchuk.weatherbyip.model.dao.IpCoordinates;
@@ -38,7 +38,7 @@ public class IpStackServiceTest {
 	@Mock
 	private IpStackMapper mapper;
 	@InjectMocks
-	private IpStackService service;
+	private ExternalClientIpStackService service;
 
 	private IpCoordinates ipCoordinates;
 

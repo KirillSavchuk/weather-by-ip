@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import lv.savchuk.weatherbyip.model.dao.Geolocation;
 import lv.savchuk.weatherbyip.model.dao.IpCoordinates;
 import lv.savchuk.weatherbyip.model.dao.WeatherForecast;
-import lv.savchuk.weatherbyip.repository.WeatherForecastRepository;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -14,19 +13,17 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class WeatherForecastManager {
 
-	private final WeatherForecastRepository weatherForecastRepository;
-	private final WeatherForecastClientManager clientManager;
+	private final WeatherForecastDatabaseManager databaseManager;
+	private final WeatherForecastExternalClientManager clientManager;
 
 	public WeatherForecast getWeatherForecast(IpCoordinates ipCoordinates) throws NotFoundException {
 		final Geolocation geolocation = ipCoordinates.getGeolocation();
 
-		final WeatherForecast weatherForecast = weatherForecastRepository.findOneBeforeCreatedOn(geolocation)
+		final WeatherForecast weatherForecast = databaseManager.getNotExpired(geolocation)
 			.orElse(clientManager.getCoordinatesByIp(ipCoordinates));
 
 		weatherForecast.setGeolocation(geolocation);
-		weatherForecastRepository.save(weatherForecast);
-
-		return weatherForecast;
+		return databaseManager.persist(weatherForecast);
 	}
 
 

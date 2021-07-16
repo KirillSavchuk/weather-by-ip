@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -15,8 +16,11 @@ public interface WeatherForecastRepository extends CrudRepository<WeatherForecas
 
 	@Query("SELECT wf FROM WeatherForecast wf " +
 		"WHERE wf.geolocation = :geolocation " +
-		"AND wf.createdOn < CURRENT_TIMESTAMP " +
+		"AND wf.createdOn >= :expiredTimestamp " +
 		"ORDER BY wf.createdOn DESC")
-	Optional<WeatherForecast> findOneBeforeCreatedOn(@Param("geolocation") Geolocation geolocation);
+	Optional<WeatherForecast> findOneBeforeByGeolocation(
+		@Param("geolocation") Geolocation geolocation,
+		@Param("expiredTimestamp") Timestamp expiredTimestamp
+	);
 
 }

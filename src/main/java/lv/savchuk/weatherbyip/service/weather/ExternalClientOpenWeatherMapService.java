@@ -4,14 +4,14 @@ import feign.FeignException;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lv.savchuk.weatherbyip.client.weather.OpenWeatherMapClient;
-import lv.savchuk.weatherbyip.client.weather.OpenWeatherMapResource;
+import lv.savchuk.weatherbyip.model.dto.OpenWeatherMapResource;
 import lv.savchuk.weatherbyip.model.dao.IpCoordinates;
 import lv.savchuk.weatherbyip.mapper.weather.OpenWeatherMapMapper;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class OpenWeatherMapService extends WeatherForecastAbstractService<OpenWeatherMapResource> {
+public class ExternalClientOpenWeatherMapService extends ExternalClientWeatherForecastAbstractService<OpenWeatherMapResource> {
 
 	@Getter
 	private final OpenWeatherMapMapper mapper;

@@ -1,6 +1,6 @@
 package lv.savchuk.weatherbyip.mapper.ip;
 
-import lv.savchuk.weatherbyip.client.ip.IpApiResource;
+import lv.savchuk.weatherbyip.model.dto.IpApiResource;
 import lv.savchuk.weatherbyip.model.dao.Geolocation;
 import lv.savchuk.weatherbyip.model.dao.IpCoordinates;
 import org.junit.Before;

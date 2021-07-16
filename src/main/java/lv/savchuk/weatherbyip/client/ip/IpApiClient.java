@@ -1,5 +1,6 @@
 package lv.savchuk.weatherbyip.client.ip;
 
+import lv.savchuk.weatherbyip.model.dto.IpApiResource;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

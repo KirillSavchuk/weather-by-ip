@@ -3,14 +3,14 @@ package lv.savchuk.weatherbyip.service.ip;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lv.savchuk.weatherbyip.client.ip.IpApiClient;
-import lv.savchuk.weatherbyip.client.ip.IpApiResource;
+import lv.savchuk.weatherbyip.model.dto.IpApiResource;
 import lv.savchuk.weatherbyip.exception.ExternalClientException;
 import lv.savchuk.weatherbyip.mapper.ip.IpApiMapper;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class IpApiService extends IpGeolocationAbstractService<IpApiResource> {
+public class ExternalClientIpApiService extends ExternalClientGeolocationAbstractService<IpApiResource> {
 
 	@Getter
 	private final IpApiMapper mapper;

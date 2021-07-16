@@ -1,6 +1,7 @@
 package lv.savchuk.weatherbyip.client.weather;
 
 import lv.savchuk.weatherbyip.client.ResourceMapperTester;
+import lv.savchuk.weatherbyip.model.dto.OpenWeatherMapResource;
 import org.junit.Test;
 
 import java.io.IOException;

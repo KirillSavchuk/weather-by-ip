@@ -1,6 +1,7 @@
 package lv.savchuk.weatherbyip.client.weather;
 
 import feign.RequestInterceptor;
+import lv.savchuk.weatherbyip.model.dto.OpenWeatherMapResource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.context.annotation.Bean;

@@ -3,7 +3,7 @@ package lv.savchuk.weatherbyip.service.ip;
 import feign.FeignException;
 import feign.Request;
 import lv.savchuk.weatherbyip.client.ip.IpApiClient;
-import lv.savchuk.weatherbyip.client.ip.IpApiResource;
+import lv.savchuk.weatherbyip.model.dto.IpApiResource;
 import lv.savchuk.weatherbyip.exception.ExternalClientException;
 import lv.savchuk.weatherbyip.mapper.ip.IpApiMapper;
 import lv.savchuk.weatherbyip.model.dao.IpCoordinates;
@@ -39,7 +39,7 @@ public class IpApiServiceTest {
 	@Mock
 	private IpApiMapper mapper;
 	@InjectMocks
-	private IpApiService service;
+	private ExternalClientIpApiService service;
 
 	private IpCoordinates ipCoordinates;
 

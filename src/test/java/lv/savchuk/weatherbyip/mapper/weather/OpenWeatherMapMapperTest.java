@@ -1,13 +1,13 @@
 package lv.savchuk.weatherbyip.mapper.weather;
 
-import lv.savchuk.weatherbyip.client.weather.OpenWeatherMapResource;
+import lv.savchuk.weatherbyip.model.dto.OpenWeatherMapResource;
 import lv.savchuk.weatherbyip.model.dao.WeatherForecast;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
-import static lv.savchuk.weatherbyip.client.weather.OpenWeatherMapResource.*;
+import static lv.savchuk.weatherbyip.model.dto.OpenWeatherMapResource.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OpenWeatherMapMapperTest {

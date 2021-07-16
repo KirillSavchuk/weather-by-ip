@@ -6,7 +6,7 @@ import lv.savchuk.weatherbyip.model.dao.WeatherForecast;
 import lv.savchuk.weatherbyip.exception.ExternalClientException;
 import lv.savchuk.weatherbyip.mapper.weather.WeatherForecastMapper;
 
-public abstract class WeatherForecastAbstractService<T> implements WeatherForecastService {
+public abstract class ExternalClientWeatherForecastAbstractService<T> implements ExternalClientWeatherForecastService {
 
 	public WeatherForecast getWeatherForecast(IpCoordinates ipCoordinates) throws ExternalClientException {
 		try {

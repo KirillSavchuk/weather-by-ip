@@ -5,7 +5,7 @@ import lv.savchuk.weatherbyip.exception.ExternalClientException;
 import lv.savchuk.weatherbyip.mapper.ip.IpCoordinatesMapper;
 import lv.savchuk.weatherbyip.model.dao.IpCoordinates;
 
-public abstract class IpGeolocationAbstractService<T> implements IpGeolocationService {
+public abstract class ExternalClientGeolocationAbstractService<T> implements ExternalClientGeolocationService {
 
 	public IpCoordinates getCoordinatesByIp(String ipAddress) throws ExternalClientException {
 		try {

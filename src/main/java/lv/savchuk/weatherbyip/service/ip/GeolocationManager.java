@@ -4,8 +4,6 @@ import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lv.savchuk.weatherbyip.model.dao.IpCoordinates;
-import lv.savchuk.weatherbyip.repository.GeolocationRepository;
-import lv.savchuk.weatherbyip.repository.IpCoordinatesRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -13,14 +11,13 @@ import java.util.Optional;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class IpGeolocationManager {
+public class GeolocationManager {
 
-	private final IpCoordinatesRepository ipCoordinatesRepository;
-	private final GeolocationRepository geolocationRepository;
-	private final IpGeolocationClientManager clientManager;
+	private final GeolocationDatabaseManager databaseManager;
+	private final GeolocationExternalClientManager clientManager;
 
 	public IpCoordinates getCoordinatesByIp(String ipAddress) throws NotFoundException {
-		Optional<IpCoordinates> optIpCoordinates = ipCoordinatesRepository.findByIpAddress(ipAddress);
+		Optional<IpCoordinates> optIpCoordinates = databaseManager.getBy(ipAddress);
 		if (optIpCoordinates.isPresent()) {
 			return optIpCoordinates.get();
 		}
@@ -32,8 +29,7 @@ public class IpGeolocationManager {
 
 	private void persist(IpCoordinates ipCoordinates, String ipAddress) {
 		ipCoordinates.setIpAddress(ipAddress);
-		geolocationRepository.save(ipCoordinates.getGeolocation());
-		ipCoordinatesRepository.save(ipCoordinates);
+		databaseManager.persist(ipCoordinates);
 	}
 
 }

@@ -3,7 +3,7 @@ package lv.savchuk.weatherbyip.service.weather;
 import feign.FeignException;
 import feign.Request;
 import lv.savchuk.weatherbyip.client.weather.OpenWeatherMapClient;
-import lv.savchuk.weatherbyip.client.weather.OpenWeatherMapResource;
+import lv.savchuk.weatherbyip.model.dto.OpenWeatherMapResource;
 import lv.savchuk.weatherbyip.exception.ExternalClientException;
 import lv.savchuk.weatherbyip.mapper.weather.OpenWeatherMapMapper;
 import lv.savchuk.weatherbyip.model.dao.IpCoordinates;
@@ -38,7 +38,7 @@ public class OpenWeatherMapServiceTest {
 	@Mock
 	private OpenWeatherMapClient client;
 	@InjectMocks
-	private OpenWeatherMapService service;
+	private ExternalClientOpenWeatherMapService service;
 
 	private IpCoordinates ipCoordinates;
 	private WeatherForecast weatherForecast;

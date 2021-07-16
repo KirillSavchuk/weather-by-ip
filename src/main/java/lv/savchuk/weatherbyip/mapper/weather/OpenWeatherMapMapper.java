@@ -1,6 +1,6 @@
 package lv.savchuk.weatherbyip.mapper.weather;
 
-import lv.savchuk.weatherbyip.client.weather.OpenWeatherMapResource;
+import lv.savchuk.weatherbyip.model.dto.OpenWeatherMapResource;
 import lv.savchuk.weatherbyip.model.dao.WeatherForecast;
 import org.springframework.stereotype.Service;
 
