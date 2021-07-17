@@ -30,12 +30,10 @@ public class RequestHistory {
 	@Column(name = "CREATED_ON")
 	private Date createdOn;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "IP_COORDINATES_FK")
-	private IpCoordinates ipCoordinates;
+	@Column(name = "IP_COORDINATES_FK")
+	private UUID ipCoordinatesId;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "WEATHER_FORECAST_FK")
-	private WeatherForecast weatherForecast;
+	@Column(name = "WEATHER_FORECAST_FK")
+	private UUID weatherForecastId;
 
 }

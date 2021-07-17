@@ -8,9 +8,7 @@ import lv.savchuk.weatherbyip.model.dao.IpCoordinates;
 import lv.savchuk.weatherbyip.model.dao.RequestHistory;
 import lv.savchuk.weatherbyip.model.dao.WeatherForecast;
 import lv.savchuk.weatherbyip.model.dto.RequesterWeatherForecast;
-import lv.savchuk.weatherbyip.repository.IpCoordinatesRepository;
 import lv.savchuk.weatherbyip.repository.RequestHistoryRepository;
-import lv.savchuk.weatherbyip.repository.WeatherForecastRepository;
 import lv.savchuk.weatherbyip.service.ip.GeolocationManager;
 import lv.savchuk.weatherbyip.service.weather.WeatherForecastManager;
 import org.springframework.stereotype.Service;
@@ -24,8 +22,6 @@ public class WeatherByIpSearchServiceImpl implements WeatherByIpSearchService {
 	private final GeolocationManager ipCoordinatesManager;
 	private final WeatherForecastManager weatherForecastManager;
 	private final RequestHistoryRepository requestHistoryRepository;
-	private final IpCoordinatesRepository coordinatesRepository;
-	private final WeatherForecastRepository weatherForecastRepository;
 	private final RequesterWeatherForecastMapper responseMapper;
 
 	public RequesterWeatherForecast getWeatherForecastByIp(String ipAddress) throws NotFoundException {
@@ -42,12 +38,11 @@ public class WeatherByIpSearchServiceImpl implements WeatherByIpSearchService {
 	}
 
 	private void saveRequestHistory(IpCoordinates ipCoordinates, WeatherForecast weatherForecast) {
-		//TODO: do something with this bad work-around: cache entities
 		final RequestHistory requestHistory = RequestHistory.builder()
-			.ipCoordinates(coordinatesRepository.findById(ipCoordinates.getId()).get())
-			.weatherForecast(weatherForecastRepository.findById(weatherForecast.getId()).get())
+			.ipCoordinatesId(ipCoordinates.getId())
+			.weatherForecastId(weatherForecast.getId())
 			.build();
-		requestHistoryRepository.saveAndFlush(requestHistory);
+		requestHistoryRepository.save(requestHistory);
 	}
 
 }
