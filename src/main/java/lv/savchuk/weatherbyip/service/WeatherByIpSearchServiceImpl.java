@@ -33,12 +33,13 @@ public class WeatherByIpSearchServiceImpl implements WeatherByIpSearchService {
 		final WeatherForecast weatherForecast = weatherForecastManager.getWeatherForecast(ipCoordinates);
 		log.info("[IP={}] Retrieved weather forecast: {}", ipAddress, weatherForecast);
 
-		saveRequestHistory(ipCoordinates, weatherForecast);
+		saveRequestHistory(ipAddress, ipCoordinates, weatherForecast);
 		return responseMapper.mapFrom(ipCoordinates, weatherForecast);
 	}
 
-	private void saveRequestHistory(IpCoordinates ipCoordinates, WeatherForecast weatherForecast) {
+	private void saveRequestHistory(String ipAddress, IpCoordinates ipCoordinates, WeatherForecast weatherForecast) {
 		final RequestHistory requestHistory = RequestHistory.builder()
+			.ipAddress(ipAddress)
 			.ipCoordinatesId(ipCoordinates.getId())
 			.weatherForecastId(weatherForecast.getId())
 			.build();

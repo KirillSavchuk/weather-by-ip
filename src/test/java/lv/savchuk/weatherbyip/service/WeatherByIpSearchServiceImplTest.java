@@ -70,6 +70,7 @@ public class WeatherByIpSearchServiceImplTest {
 
 		verify(requestHistoryRepository).save(requestHistoryCaptor.capture());
 		final RequestHistory requestHistory = requestHistoryCaptor.getValue();
+		assertThat(requestHistory.getIpAddress()).isEqualTo(IP_ADDRESS);
 		assertThat(requestHistory.getIpCoordinatesId()).isEqualTo(IP_COORDINATES_UUID);
 		assertThat(requestHistory.getWeatherForecastId()).isEqualTo(WEATHER_FORECAST_UUID);
 	}

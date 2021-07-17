@@ -30,6 +30,9 @@ public class RequestHistory {
 	@Column(name = "CREATED_ON")
 	private Date createdOn;
 
+	@Column(name = "IP_ADDRESS")
+	private String ipAddress;
+
 	@Column(name = "IP_COORDINATES_FK")
 	private UUID ipCoordinatesId;
 
