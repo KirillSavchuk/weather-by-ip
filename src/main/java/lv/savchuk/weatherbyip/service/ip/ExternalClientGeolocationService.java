@@ -6,6 +6,6 @@ import lv.savchuk.weatherbyip.service.ExternalClientService;
 
 public interface ExternalClientGeolocationService extends ExternalClientService  {
 
-	IpCoordinates getCoordinatesByIp(String ipAddress) throws ExternalClientException;
+	IpCoordinates getCoordinates(String ipAddress) throws ExternalClientException;
 
 }

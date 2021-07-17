@@ -17,11 +17,11 @@ import static java.lang.String.format;
 @Service
 public class WeatherForecastExternalClientManager extends ExternalClientManager<ExternalClientWeatherForecastService> {
 
-	private WeatherForecastExternalClientManager(Set<ExternalClientWeatherForecastService> clientServices) {
+	public WeatherForecastExternalClientManager(Set<ExternalClientWeatherForecastService> clientServices) {
 		super(clientServices);
 	}
 
-	public WeatherForecast getCoordinatesByIp(IpCoordinates ipCoordinates) throws NotFoundException {
+	public WeatherForecast getWeatherForecast(IpCoordinates ipCoordinates) throws NotFoundException {
 		for (ExternalClientServiceHolder<ExternalClientWeatherForecastService> clientService : getValidServices()) {
 			try {
 				return clientService.getService().getWeatherForecast(ipCoordinates);

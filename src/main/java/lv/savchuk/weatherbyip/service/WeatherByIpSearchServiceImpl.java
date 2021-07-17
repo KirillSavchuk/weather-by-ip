@@ -27,7 +27,7 @@ public class WeatherByIpSearchServiceImpl implements WeatherByIpSearchService {
 	public RequesterWeatherForecast getWeatherForecastByIp(String ipAddress) throws NotFoundException {
 		log.info("[IP={}]", ipAddress);
 
-		final IpCoordinates ipCoordinates = ipCoordinatesManager.getCoordinatesByIp(ipAddress);
+		final IpCoordinates ipCoordinates = ipCoordinatesManager.getCoordinates(ipAddress);
 		log.info("[IP={}] Retrieved coordinates: {}", ipAddress, ipCoordinates);
 
 		final WeatherForecast weatherForecast = weatherForecastManager.getWeatherForecast(ipCoordinates);

@@ -54,7 +54,7 @@ public class IpApiServiceTest {
 
 	@Test
 	public void getCoordinatesByIp_success() throws ExternalClientException {
-		final IpCoordinates ipCoordinates = service.getCoordinatesByIp(IP_ADDRESS);
+		final IpCoordinates ipCoordinates = service.getCoordinates(IP_ADDRESS);
 
 		assertThat(ipCoordinates).isEqualTo(this.ipCoordinates);
 	}
@@ -66,7 +66,7 @@ public class IpApiServiceTest {
 		when(client.findGeolocationByIp(eq(IP_ADDRESS), any()))
 			.thenThrow(new FeignException.BadRequest("BadRequest", createDummyRequest(), "ERROR_RESPONSE".getBytes()));
 
-		service.getCoordinatesByIp(IP_ADDRESS);
+		service.getCoordinates(IP_ADDRESS);
 
 		verifyNoInteractions(mapper.mapFrom(any(IpApiResource.class)));
 	}

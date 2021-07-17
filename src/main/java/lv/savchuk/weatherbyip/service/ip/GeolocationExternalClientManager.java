@@ -16,19 +16,19 @@ import static java.lang.String.format;
 @Service
 public class GeolocationExternalClientManager extends ExternalClientManager<ExternalClientGeolocationService> {
 
-	private GeolocationExternalClientManager(Set<ExternalClientGeolocationService> clientServices) {
+	public GeolocationExternalClientManager(Set<ExternalClientGeolocationService> clientServices) {
 		super(clientServices);
 	}
 
-	public IpCoordinates getCoordinatesByIp(String ipAddress) throws NotFoundException {
+	public IpCoordinates getCoordinates(String ipAddress) throws NotFoundException {
 		for (ExternalClientServiceHolder<ExternalClientGeolocationService> clientService : getValidServices()) {
 			try {
-				return clientService.getService().getCoordinatesByIp(ipAddress);
+				return clientService.getService().getCoordinates(ipAddress);
 			} catch (ExternalClientException ex) {
 				handleExternalClientException(ex, clientService);
 			}
 		}
-		throw new NotFoundException(format("IP '%s' geolocation data was not found!", ipAddress));
+		throw new NotFoundException(format("Geolocation data for IP '%s' was not found!", ipAddress));
 	}
 
 }

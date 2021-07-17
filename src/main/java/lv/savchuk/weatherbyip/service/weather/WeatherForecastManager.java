@@ -10,7 +10,6 @@ import lv.savchuk.weatherbyip.model.dao.WeatherForecast;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-@Slf4j
 @Service
 @RequiredArgsConstructor
 public class WeatherForecastManager {
@@ -23,7 +22,7 @@ public class WeatherForecastManager {
 		final Geolocation geolocation = ipCoordinates.getGeolocation();
 
 		final WeatherForecast weatherForecast = databaseManager.getNotExpired(geolocation)
-			.orElse(clientManager.getCoordinatesByIp(ipCoordinates));
+			.orElse(clientManager.getWeatherForecast(ipCoordinates));
 
 		weatherForecast.setGeolocation(geolocation);
 		return databaseManager.persist(weatherForecast);

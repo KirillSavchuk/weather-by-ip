@@ -19,13 +19,13 @@ public class GeolocationManager {
 	private final GeolocationExternalClientManager clientManager;
 
 	@Cacheable(value = AppCacheConfig.CACHE_GET_COORDINATES_BY_IP_ADDRESS)
-	public IpCoordinates getCoordinatesByIp(String ipAddress) throws NotFoundException {
+	public IpCoordinates getCoordinates(String ipAddress) throws NotFoundException {
 		Optional<IpCoordinates> optIpCoordinates = databaseManager.getBy(ipAddress);
 		if (optIpCoordinates.isPresent()) {
 			return optIpCoordinates.get();
 		}
 
-		final IpCoordinates ipCoordinates = clientManager.getCoordinatesByIp(ipAddress);
+		final IpCoordinates ipCoordinates = clientManager.getCoordinates(ipAddress);
 		persist(ipCoordinates, ipAddress);
 		return ipCoordinates;
 	}

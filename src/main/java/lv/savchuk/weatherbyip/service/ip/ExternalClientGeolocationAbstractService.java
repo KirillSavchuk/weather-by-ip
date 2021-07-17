@@ -7,9 +7,9 @@ import lv.savchuk.weatherbyip.model.dao.IpCoordinates;
 
 public abstract class ExternalClientGeolocationAbstractService<T> implements ExternalClientGeolocationService {
 
-	public IpCoordinates getCoordinatesByIp(String ipAddress) throws ExternalClientException {
+	public IpCoordinates getCoordinates(String ipAddress) throws ExternalClientException {
 		try {
-			final T resource = getIpCoordinatesResource(ipAddress);
+			final T resource = getCoordinatesResource(ipAddress);
 			validateResource(resource);
 			return getMapper().mapFrom(resource);
 		} catch (FeignException ex) {
@@ -17,7 +17,7 @@ public abstract class ExternalClientGeolocationAbstractService<T> implements Ext
 		}
 	}
 
-	protected abstract T getIpCoordinatesResource(String ipAddress) throws FeignException;
+	protected abstract T getCoordinatesResource(String ipAddress) throws FeignException;
 
 	protected abstract IpCoordinatesMapper<T> getMapper();
 

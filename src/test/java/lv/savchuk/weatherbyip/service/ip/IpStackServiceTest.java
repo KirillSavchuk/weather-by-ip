@@ -53,7 +53,7 @@ public class IpStackServiceTest {
 
 	@Test
 	public void getCoordinatesByIp_success() throws ExternalClientException {
-		final IpCoordinates ipCoordinates = service.getCoordinatesByIp(IP_ADDRESS);
+		final IpCoordinates ipCoordinates = service.getCoordinates(IP_ADDRESS);
 
 		assertThat(ipCoordinates).isEqualTo(this.ipCoordinates);
 	}
@@ -65,7 +65,7 @@ public class IpStackServiceTest {
 		when(client.findGeolocationByIp(eq(IP_ADDRESS), any()))
 			.thenThrow(new FeignException.BadRequest("BadRequest", createDummyRequest(), null));
 
-		service.getCoordinatesByIp(IP_ADDRESS);
+		service.getCoordinates(IP_ADDRESS);
 
 		verifyNoInteractions(mapper.mapFrom(any(IpStackResource.class)));
 	}
@@ -84,7 +84,7 @@ public class IpStackServiceTest {
 			.build();
 		when(client.findGeolocationByIp(eq(IP_ADDRESS), any())).thenReturn(ipStackResource);
 
-		service.getCoordinatesByIp(IP_ADDRESS);
+		service.getCoordinates(IP_ADDRESS);
 
 		verifyNoInteractions(mapper.mapFrom(any(IpStackResource.class)));
 	}
