@@ -8,7 +8,7 @@ import java.util.Optional;
 @Service
 public class HttpRequestService {
 
-	static final String HEADER_X_FORWARDED_FOR = "X-Forwarded-For";
+	public static final String HEADER_X_FORWARDED_FOR = "X-Forwarded-For";
 
 	public String getIpAddress(HttpServletRequest request) {
 		return Optional.ofNullable(request.getHeader(HEADER_X_FORWARDED_FOR))

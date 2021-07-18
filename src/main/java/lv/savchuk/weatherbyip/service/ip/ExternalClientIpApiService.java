@@ -3,9 +3,9 @@ package lv.savchuk.weatherbyip.service.ip;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lv.savchuk.weatherbyip.client.ip.IpApiClient;
-import lv.savchuk.weatherbyip.model.dto.IpApiResource;
 import lv.savchuk.weatherbyip.exception.ExternalClientException;
 import lv.savchuk.weatherbyip.mapper.ip.IpApiMapper;
+import lv.savchuk.weatherbyip.model.dto.IpApiResource;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 @Order(1)
 @RequiredArgsConstructor
 public class ExternalClientIpApiService extends ExternalClientGeolocationAbstractService<IpApiResource> {
+
+	public static final String STATUS_FAILED = "fail";
 
 	@Getter
 	private final IpApiMapper mapper;
@@ -27,7 +29,9 @@ public class ExternalClientIpApiService extends ExternalClientGeolocationAbstrac
 
 	@Override
 	protected void validateResource(IpApiResource resource) throws ExternalClientException {
-		//TODO: add validation
+		if (STATUS_FAILED.equalsIgnoreCase(resource.getStatus())) {
+			throw new ExternalClientException(resource.getMessage(), resource.toString());
+		}
 	}
 
 }

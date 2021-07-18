@@ -29,6 +29,8 @@ public class ExternalClientIpStackService extends ExternalClientGeolocationAbstr
 	protected void validateResource(IpStackResource resource) throws ExternalClientException {
 		if (resource.getError() != null) {
 			throw new ExternalClientException(resource.getError().getInfo(), resource.toString());
+		} else if (resource.getLongitude() == null || resource.getLatitude() == null) {
+			throw new ExternalClientException("Longitude and Latitude are not returned", resource.toString());
 		}
 	}
 

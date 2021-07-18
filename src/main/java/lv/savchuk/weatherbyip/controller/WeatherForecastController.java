@@ -1,5 +1,6 @@
 package lv.savchuk.weatherbyip.controller;
 
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
+import static lv.savchuk.weatherbyip.service.HttpRequestService.HEADER_X_FORWARDED_FOR;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -29,8 +32,9 @@ public class WeatherForecastController {
 		value = "Get current weather forecast",
 		notes = "Returns current weather forecast in the requester location determined by requester IP address.",
 		response = RequesterWeatherForecast.class)
+	@ApiImplicitParam(name = HEADER_X_FORWARDED_FOR, value = HEADER_X_FORWARDED_FOR, paramType = "header", dataTypeClass = String.class, example = "80.232.255.188")
 	public ResponseEntity<RequesterWeatherForecast> getWeatherForecast(HttpServletRequest request) throws NotFoundException {
-		final String ipAddress = "85.234.174.19"; // requestService.getIpAddress(request);
+		final String ipAddress = requestService.getIpAddress(request);
 		final RequesterWeatherForecast weatherForecast = weatherByIpSearchService.getWeatherForecastByIp(ipAddress);
 		return ResponseEntity.ok().body(weatherForecast);
 	}

@@ -27,7 +27,7 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class IpApiServiceTest {
+public class ExternalClientIpApiServiceTest {
 
 	@Rule
 	public final ExpectedException exception = ExpectedException.none();
